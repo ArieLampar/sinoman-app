@@ -562,12 +562,8 @@ export interface Database {
         Update: Partial<Omit<AuditLog, 'id' | 'created_at'>>
       }
     }
-    Views: {
-      // Views bisa ditambahkan nanti sesuai kebutuhan
-    }
-    Functions: {
-      // Functions bisa ditambahkan nanti sesuai kebutuhan
-    }
+    Views: Record<string, never>
+    Functions: Record<string, never>
     Enums: {
       member_status: MemberStatus
       member_role: MemberRole

@@ -18,7 +18,13 @@ export default async function SavingsPage() {
 
   // Get member data
   let memberData: MemberWithRelations | null = null
-  let transactions: any[] = []
+  let transactions: Array<{
+    transaction_type: 'deposit' | 'withdrawal'
+    savings_type: string
+    amount: number
+    balance_after: number
+    transaction_date: string
+  }> = []
   
   try {
     memberData = await getServerMemberData(user.id)

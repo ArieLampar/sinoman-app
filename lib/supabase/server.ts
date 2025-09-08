@@ -106,10 +106,10 @@ export const getServerMemberData = async (userId: string) => {
           last_transaction_date
         ),
         waste_balance:waste_balances(
-          organic_balance,
-          inorganic_balance,
-          total_balance,
-          last_updated
+          current_balance,
+          total_weight_collected_kg,
+          total_earnings,
+          updated_at
         )
       `)
       .eq('id', userId)
