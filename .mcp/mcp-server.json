@@ -1,0 +1,66 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "node",
+      "args": ["./node_modules/@modelcontextprotocol/server-nodejs/dist/index.js"],
+      "config": {
+        "type": "filesystem",
+        "rootPath": "./",
+        "security": {
+          "allowedPaths": [
+            "app/**/*",
+            "components/**/*", 
+            "lib/**/*",
+            "database/**/*.sql"
+          ],
+          "blockedPaths": [
+            "**/.env*",
+            "**/secrets/**",
+            "**/credentials/**",
+            "**/*.key"
+          ],
+          "readOnly": false,
+          "maxFileSize": "10MB"
+        },
+        "audit": {
+          "enabled": true,
+          "logPath": "./audit-logs/mcp-filesystem.log"
+        }
+      }
+    },
+    "database": {
+      "command": "node",
+      "args": ["./node_modules/@modelcontextprotocol/server-postgres/dist/index.js"],
+      "env": {
+        "DATABASE_URL": "${SUPABASE_DATABASE_URL}"
+      },
+      "config": {
+        "type": "postgres",
+        "security": {
+          "allowedOperations": ["SELECT", "INSERT", "UPDATE"],
+          "blockedOperations": ["DROP", "TRUNCATE", "DELETE"],
+          "rowLevelSecurity": true,
+          "maskedFields": ["nik", "phone", "email"],
+          "maxRowsPerQuery": 1000
+        },
+        "schemas": {
+          "allowed": ["public"],
+          "blocked": ["auth", "storage"]
+        },
+        "audit": {
+          "enabled": true,
+          "logPath": "./audit-logs/mcp-database.log",
+          "logLevel": "info"
+        }
+      }
+    }
+  },
+  "rateLimiting": {
+    "enabled": true,
+    "limits": {
+      "filesystem": 100,
+      "database": 50
+    },
+    "windowMs": 60000
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "sinoman-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Project\\sinoman-app"
+      ]
+    },
+    "sinoman-database": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://[your-supabase-url]"
+      ],
+      "env": {
+        "PGSSL": "require"
+      }
+    }
+  }
+}

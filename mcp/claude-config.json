@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "sinoman-cooperative": {
+      "command": "node",
+      "args": ["--loader", "ts-node/esm", "mcp/server.ts"],
+      "cwd": "C:\\Project\\sinoman-app",
+      "env": {
+        "NODE_ENV": "development",
+        "LOG_LEVEL": "info"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "C:\\Project\\sinoman-app"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "postgres-cooperative": {
+      "command": "npx",
+      "args": ["mcp-postgres-full-access"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://user:password@host:port/database",
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  "globalShortcuts": {
+    "CommandOrControl+Shift+M": "mcp-toggle"
+  }
+}

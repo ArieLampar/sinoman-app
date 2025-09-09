@@ -2,6 +2,7 @@ import { getServerUser, getServerMemberData } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import type { Member, Tenant, SavingsAccount, WasteBalance } from '@/types/database.types'
 import Link from 'next/link'
+import { NotificationBell } from '@/components/notifications/notification-bell'
 
 type MemberWithRelations = Member & {
   tenant?: Tenant | null
@@ -56,11 +57,14 @@ export default async function DashboardPage() {
                 <p className="text-gray-600">Dashboard Koperasi Digital</p>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-600">Selamat datang,</p>
-              <p className="text-lg font-semibold text-gray-900">
-                {memberData?.full_name || user.email?.split('@')[0] || 'Member'}
-              </p>
+            <div className="flex items-center gap-4">
+              <NotificationBell />
+              <div className="text-right">
+                <p className="text-sm text-gray-600">Selamat datang,</p>
+                <p className="text-lg font-semibold text-gray-900">
+                  {memberData?.full_name || user.email?.split('@')[0] || 'Member'}
+                </p>
+              </div>
             </div>
           </div>
         </div>

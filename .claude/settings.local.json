@@ -8,7 +8,13 @@
       "Bash(npm run lint)",
       "Bash(mkdir:*)",
       "Bash(git config:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(taskkill:*)",
+      "WebSearch",
+      "Bash(node:*)",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

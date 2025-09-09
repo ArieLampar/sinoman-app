@@ -1,0 +1,22 @@
+{
+  "initialized": true,
+  "timestamp": "2025-09-09T04:37:11.806Z",
+  "version": "1.0.0",
+  "servers": {
+    "filesystem": {
+      "enabled": true,
+      "path": "C:\\Project\\sinoman-app",
+      "security": "enabled"
+    },
+    "database": {
+      "enabled": true,
+      "masking": "enabled",
+      "rls": "enabled"
+    }
+  },
+  "security": {
+    "auditLogging": true,
+    "rateLimiting": true,
+    "dataClassification": "sensitive"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "claude-code.mcp": {
+    "enabled": true,
+    "autoConnect": true,
+    "servers": {
+      "filesystem": {
+        "enabled": true,
+        "path": "${workspaceFolder}",
+        "permissions": "read-write"
+      },
+      "database": {
+        "enabled": true,
+        "connectionString": "${env:DATABASE_URL}",
+        "permissions": "read-only"
+      }
+    },
+    "security": {
+      "requireAuthentication": true,
+      "maskSensitiveData": true,
+      "auditLogging": true,
+      "rateLimiting": {
+        "enabled": true,
+        "maxRequests": 100,
+        "windowMs": 60000
+      }
+    },
+    "monitoring": {
+      "enabled": true,
+      "alertThreshold": {
+        "errors": 5,
+        "unauthorizedAccess": 1,
+        "rateLimitExceeded": 10
+      }
+    }
+  }
+}
